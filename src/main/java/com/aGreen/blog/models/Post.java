@@ -13,10 +13,18 @@ public class Post {
 
     private String anons;
 
-    @Column(name = "fell_text")
+    @Column(name = "full_text")
     private String fullText;
 
     private int views;
+
+    public Post() { }
+
+    public Post(String title, String anons, String fullText) {
+        this.title = title;
+        this.anons = anons;
+        this.fullText = fullText;
+    }
 
     public Long getId() {
         return id;
