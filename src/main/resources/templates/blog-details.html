@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Блог сайта</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -11,10 +11,11 @@
 <div class="container mt-5">
     <div th:each="element : ${post}" class="alert alert-info mt-2">
         <h3 th:text="${element.title}"></h3>
-        <p th:text="${element.fullText}"></p><br>
-        <a th:href="'/blog/' + ${element.id} + '/edit'" class="btn btn-success">Редактировать</a>
-        <a th:href="'/blog/' + ${element.id} + '/remove'" class="btn btn-danger">Удалить</a><br>
-
+        <p th:text="${element.fullText}"></p>
+        <h6 th:text="'Просмотров: ' + ${element.views}"></h6><a th:href="'/blog/' + ${element.id} + '/edit'" class="btn btn-success">Редактировать</a>
+        <form class="mt-2" th:action="'/blog/' + ${element.id} + '/remove'" method="post">
+            <button class="btn btn-danger" type="submit">Удалить</button>
+        </form>
     </div>
 </div>
 
